@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CollectionController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,11 +15,9 @@ use App\Http\Controllers\CollectionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+// Nama : Ihsan Muhammad Iqbal
 // NIM : 6706220123
-// NAMA : IHSAN MUHAMMAD IQBAL
-// KELAS : 46-03
-
+// Kelas : 46-03
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,7 +27,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route untuk list pengguna
+// Route untuk daftar pengguna
 Route::get('/user', [\App\Http\Controllers\ProfileController::class, 'index'])->middleware(['auth', 'verified'])->name('user');
 
 // Route untuk show daftar pengguna
@@ -53,3 +52,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Auth::routes();

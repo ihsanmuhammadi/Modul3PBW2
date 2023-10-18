@@ -8,17 +8,17 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Datatables\CollectionsDatatable;
+
 
 class CollectionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(CollectionsDataTable $dataTable)
     {
-        $collections = Collection::all();
-
-        return view('koleksi.daftarKoleksi', compact(var_name: 'collections'));
+        return $dataTable->render('koleksi.daftarKoleksi');
     }
 
     /**
@@ -29,10 +29,6 @@ class CollectionController extends Controller
         return view('koleksi.registrasi');
     }
 
-    // NIM : 6706220123
-    // NAMA : IHSAN MUHAMMAD IQBAL
-    // KELAS : 46-03
-    
     /**
      * Store a newly created resource in storage.
      */
@@ -58,3 +54,6 @@ class CollectionController extends Controller
         return view('koleksi.infoKoleksi', ['collection' => $collection]);
     }
 }
+   // Nama : Ihsan Muhammad Iqbal
+    // NIM : 6706220123
+    // Kelas : 46-03

@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
-    // NIM : 6706220123
-    // NAMA : IHSAN MUHAMMAD IQBAL
-    // KELAS : 46-03
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -43,6 +41,11 @@ class RegisteredUserController extends Controller
             'phoneNumber' => ['required', 'string', 'max:20'],
             'agama' => ['required', 'string', 'max:20'],
             'gender' => ['required', 'integer', 'max:4']
+        ],
+        [
+            'username.required' => 'Username harus diisi',
+            'username.unique' => 'Username telah digunakan',
+            'birthdate.before' => 'Tanggal lahir harus sebelum hari ini'
         ]);
 
         $user = User::create([
@@ -64,3 +67,6 @@ class RegisteredUserController extends Controller
         return redirect(RouteServiceProvider::HOME);
     }
 }
+    // NIM : 6706220123
+    // NAMA : IHSAN MUHAMMAD IQBAL
+    // KELAS : 46-03

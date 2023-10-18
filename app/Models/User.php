@@ -8,9 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-    // NIM : 6706220123
-    // NAMA : IHSAN MUHAMMAD IQBAL
-    // KELAS : 46-03
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -52,3 +50,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 }
+    // NIM : 6706220123
+    // NAMA : IHSAN MUHAMMAD IQBAL
+    // KELAS : 46-03
