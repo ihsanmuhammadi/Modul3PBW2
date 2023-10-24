@@ -1,47 +1,98 @@
-<!--  NIM : 6706220123
-        NAMA : IHSAN MUHAMMAD IQBAL
-        KELAS : 46-03 -->
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Rincian Informasi Pengguna') }}
-        </h2>
-    </x-slot>
+{{-- Nama : Ihsan Muhammad Iqbal
+NIM : 6706220123
+Kelas : 46-03 --}}
+@extends('layouts.app')
+@section('content')
+<div class="container">
+    <h1 class="my-4" style="font-weight: bold;">Edit Pengguna</h1>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <table class="min-w-full">
-                        <thead>
-                            <tr>
-                                <th class="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-700 uppercase tracking-wider">Nama</th>
-                                <th class="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-700 uppercase tracking-wider">Email</th>
-                                <th class="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-700 uppercase tracking-wider">Nomor Telepon</th>
-                                <th class="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-700 uppercase tracking-wider">Username</th>
-                                <th class="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-700 uppercase tracking-wider">Alamat</th>
-                                <th class="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-700 uppercase tracking-wider">Tanggal Lahir</th>
-                                <th class="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-700 uppercase tracking-wider">Agama</th>
-                                <th class="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-700 uppercase tracking-wider">Jenis Kelamin</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+    <form method="POST" action="{{ route('userUpdate') }}">
+        @csrf
 
-                            <tr>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $user->fullname }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $user->email }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $user->phoneNumber }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $user->username }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $user->adress }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $user->birthdate }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $user->agama }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $user->gender }}</td>
-                            </tr>
+        {{-- to detect id --}}
+        <input type="hidden" name="id" value="{{ $user->id }}">
 
-                        </tbody>
-                    </table>
-                </div>
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-striped">
+                    {{-- ID User --}}
+                    <tr>
+                        <th class="text-start">ID User*</th>
+                        <td>{{ $user->id }}</td>
+                    </tr>
+                    {{-- Username --}}
+                    <tr>
+                        <th class="text-start">Username*</th>
+                        <td>{{ $user->username }}</td>
+                    </tr>
+                    {{-- Fullname --}}
+                    <tr>
+                        <th class="text-start">Fullname*</th>
+                        <td>
+                            <input type="text" name="fullname" value="{{ $user->fullname }}">
+                        </td>
+                    </tr>
+                    {{-- Password --}}
+                    <tr>
+                        <th class="text-start">Password*</th>
+                        <td>
+                            <input type="password" name="password" value="">
+                        </td>
+                    </tr>
+                    {{-- Password confirmation --}}
+                    <tr>
+                        <th class="text-start">Konfirmasi Password*</th>
+                        <td>
+                            <input type="password" name="password_confirmation" value="">
+                        </td>
+                    </tr>
+                    {{-- Email --}}
+                    <tr>
+                        <th class="text-start">Email*</th>
+                        <td>{{ $user->email }}</td>
+                    </tr>
+                    {{-- Adress --}}
+                    <tr>
+                        <th class="text-start">Address*</th>
+                        <td>
+                            <input type="text" name="adress" value="{{ $user->adress }}">
+                        </td>
+                    </tr>
+                    {{-- Phone Number --}}
+                    <tr>
+                        <th class="text-start">Phone Number*</th>
+                        <td>
+                            <input type="text" name="phoneNumber" value="{{ $user->phoneNumber }}">
+                        </td>
+                    </tr>
+                    {{-- Birthdate --}}
+                    <tr>
+                        <th class="text-start">Birthdate*</th>
+                        <td>{{ $user->birthdate }}</td>
+                    </tr>
+                    {{-- Agama --}}
+                    <tr>
+                        <th class="text-start">Agama*</th>
+                        <td>
+                            <input type="text" name="agama" value="{{ $user->agama }}">
+                        </td>
+                    </tr>
+                    {{-- Gender --}}
+                    <tr>
+                        <th class="text-start">Jenis Kelamin*</th>
+                        <td>
+                            <select name="gender">
+                                <option value="1" {{ $user->gender === 1 ? 'selected' : '' }}>Pria</option>
+                                <option value="2" {{ $user->gender === 2 ? 'selected' : '' }}>Wanita</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <a href="{{ route('user') }}" class="btn btn-secondary">Back</a>
+                <button class="btn btn-success">Update</button>
             </div>
         </div>
-    </div>
-</x-app-layout>
+    </form>
+</div>
+
+@endsection

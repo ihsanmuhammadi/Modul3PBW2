@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Collection extends Model {
     use HasFactory;
     public $timestamps = false;
-    
+
     protected $fillable = [
         'namaKoleksi',
         'jenisKoleksi',

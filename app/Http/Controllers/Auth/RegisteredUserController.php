@@ -43,6 +43,11 @@ class RegisteredUserController extends Controller
             'phoneNumber' => ['required', 'string', 'max:20'],
             'agama' => ['required', 'string', 'max:20'],
             'gender' => ['required', 'integer', 'max:4']
+        ],
+        [
+            'username.required' => 'Username harus diisi',
+            'username.unique' => 'Username telah digunakan',
+            'birthdate.before' => 'Tanggal lahir harus sebelum hari ini'
         ]);
 
         $user = User::create([

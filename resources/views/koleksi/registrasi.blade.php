@@ -1,8 +1,8 @@
 <!--  NIM : 6706220123
         NAMA : IHSAN MUHAMMAD IQBAL
         KELAS : 46-03 -->
-<x-app-layout>
-    <x-guest-layout>
+@extends('layouts.guest')
+    @section('content')
         <form method="POST" action="{{ route('koleksiStore') }}">
             @csrf
 
@@ -40,10 +40,7 @@
                 <x-text-input id="jumlahKoleksi" class="block mt-1 w-full" type="number" name="jumlahKoleksi" :value="old('jumlahKoleksi')" required autofocus />
                 <x-input-error :messages="$errors->get('jumlahKoleksi')" class="mt-2" />
             </div>
-
-            <!--  NIM : 6706220123
-        NAMA : IHSAN MUHAMMAD IQBAL
-        KELAS : 46-03 -->
+    
             <!-- Pengarang -->
             <div class="mt-4">
                 <x-input-label for="namaPengarang" :value="__('Nama Pengarang')" />
@@ -59,10 +56,17 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
+                <x-primary-button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-4" type="reset">
+                    Reset
+                </x-primary-button>
                 <x-primary-button class="ml-4">
                     {{ __('Tambah') }}
                 </x-primary-button>
             </div>
         </form>
-    </x-guest-layout>
-</x-app-layout>
+
+        {{-- button back --}}
+        <a href="{{ route('user') }}" class="text-blue-500 hover:text-blue-700 underline" style="cursor: pointer; text-decoration: none;">
+            Back &larr;
+        </a>
+    @endsection
