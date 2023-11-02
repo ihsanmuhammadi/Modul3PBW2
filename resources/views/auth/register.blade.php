@@ -1,8 +1,11 @@
-<x-guest-layout>
+{{-- Nama: Ananda Hawa Oktavia
+    NIM: 6706220129
+    Kelas: D3IF-46-03 --}}
+
+@extends('layouts.guest')
+@section('content')
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
-        
         <div>
             <x-input-label for="username" :value="__('Username')" />
             <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus />
@@ -35,8 +38,6 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <!-- Username -->
-        <!-- Confirm Password -->
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
@@ -68,16 +69,14 @@
             <x-input-error :messages="$errors->get('phoneNumber')" class="mt-2" />
         </div>
 
+        <!-- Confirm Password -->
         <!-- Agama -->
         <div class="mt-4">
             <x-input-label for="agama" :value="__('Agama')" />
             <x-text-input id="agama" class="block mt-1 w-full" type="text" name="agama" :value="old('agama')" required autofocus />
             <x-input-error :messages="$errors->get('agama')" class="mt-2" />
         </div>
-
-        <!--  NIM : 6706220123
-        NAMA : IHSAN MUHAMMAD IQBAL
-        KELAS : 46-03 -->
+        
         <!-- Gender -->
         <div class="mt-4">
             <x-input-label :value="__('Jenis Kelamin')" for="gender" />
@@ -95,13 +94,19 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+            <a class="mr-3 underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
+
+            <!-- button reset -->
+            <x-primary-button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-4" type="reset">
+                Reset
+                </x-primary-button>
 
             <x-primary-button class="ml-4">
                 {{ __('Register') }}
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+
+@endsection

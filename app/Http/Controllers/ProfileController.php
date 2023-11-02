@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;
+use App\Datatables\UsersDataTable;
+
+    // Nama : Ihsan Muhammad Iqbal
+    // NIM : 6706220123
+    // Kelas : 46-03
 
 class ProfileController extends Controller
 {
@@ -59,15 +64,9 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
-    // NIM : 6706220123
-    // NAMA : IHSAN MUHAMMAD IQBAL
-    // KELAS : 46-03
-    // display list
-    public function index()
+    public function index(UsersDataTable $dataTable)
     {
-        $users = User::all();
-
-        return view('user.daftarPengguna', compact(var_name: 'users'));
+        return $dataTable->render('user.daftarPengguna');
     }
 
     // display particular user
